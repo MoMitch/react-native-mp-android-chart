@@ -42,6 +42,7 @@ public class PieChartManager extends ChartBaseManager<PieChart, Entry> {
     @Override
     void dataSetConfig(IDataSet<Entry> dataSet, ReadableMap config) {
         PieDataSet pieDataSet = (PieDataSet) dataSet;
+        pieDataSet.setDrawValues(false);
 
         ChartDataSetConfigUtils.commonConfig(pieDataSet, config);
 
@@ -57,6 +58,12 @@ public class PieChartManager extends ChartBaseManager<PieChart, Entry> {
     @ReactProp(name = "drawSliceText")
     public void setDrawSliceText(PieChart chart, boolean enabled) {
         chart.setDrawSliceText(enabled);
+    }
+
+    @ReactProp(name = "enableTouch")
+    public void setTouchRotation(PieChart chart, boolean enabled) {
+        chart.setRotationEnabled(false);
+        chart.setTouchEnabled(false);
     }
 
     @ReactProp(name = "usePercentValues")
